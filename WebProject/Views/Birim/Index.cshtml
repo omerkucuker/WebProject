@@ -1,0 +1,35 @@
+﻿@using WebProject.Models
+@model List<Birim>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layoutw3.cshtml";
+}
+
+<br />
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>ID</th>
+        <th>Birim</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Personelleri Görüntüle</th>
+
+    </tr>
+    @foreach (var l in Model)
+    {
+        <tr>
+            <td>@l.BirimID</td>
+            <td>@l.BirimAd</td>
+            <td><a href="/Birim/BirimSil/@l.BirimID" class="btn btn-danger">Sil</a>  </td>
+            <td><a href="/Birim/BirimGetir/@l.BirimID" class="btn btn-success">Güncelle</a>  </td>
+            <td><a href="/Birim/BirimDetay/@l.BirimID" class="btn btn-default" style="background-color:burlywood">Detaylar</a>  </td>
+        </tr>
+
+    }
+
+</table>
+
+<a href="/Birim/YeniBirim" class="btn btn-primary">Yeni Birim Ekle</a>
+

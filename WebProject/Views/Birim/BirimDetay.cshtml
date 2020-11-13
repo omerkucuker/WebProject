@@ -1,0 +1,35 @@
+﻿@using WebProject.Models
+@model List<Personel>
+@{
+    ViewData["Title"] = "BirimDetay";
+    Layout = "~/Views/Shared/_Layoutw3.cshtml";
+}
+
+<br />
+<h2>@ViewBag.birmd</h2> @*birim adı bu şekilde getiriliyor*@
+<table class="table table-bordered">
+
+    <tr>
+        <th>ID</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+       @*// <th>Birim Ad</th>*@
+        
+
+
+    </tr>
+    @foreach (var l in Model)
+    {
+        <tr>
+            <td>@l.PersonelID</td>
+            <td>@l.Ad</td>
+            <td>@l.Soyad</td>
+            @*<td>@l.Birim.BirimAd</td> bu calismiyor*@
+            
+
+        </tr>
+
+    }
+
+</table>
+

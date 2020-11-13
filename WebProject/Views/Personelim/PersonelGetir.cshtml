@@ -1,0 +1,28 @@
+﻿@model WebProject.Models.Personel
+@{
+    ViewData["Title"] = "PersonelGetir";
+    Layout = "~/Views/Shared/_Layoutw3.cshtml";
+}
+
+<br />
+
+@using (Html.BeginForm("PersonelGuncelle", "Personelim", FormMethod.Post))
+{
+    <b>Personel ID</b>
+    @Html.TextBoxFor(x => x.PersonelID, new { @class = "form control" })
+    <br />
+    <br />
+
+
+    <b>Personel Adı</b>
+    @Html.TextBoxFor(x => x.Ad, new { @class = "form control" })
+    <br />
+    <br />
+    <b>Personel Soyadı</b>
+    @Html.TextBoxFor(x => x.Soyad, new { @class = "form control" })
+    <br />
+    <br />
+
+    <button class="btn btn-info" style="background-color:cornflowerblue">Personel Güncelle</button>
+}
+
