@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layoutw3.cshtml";
 }
-
+<h2>Birimler</h2>
 <br />
 
 <table class="table table-bordered">
@@ -20,7 +20,7 @@
     @foreach (var l in Model)
     {
         <tr>
-            <td>@l.BirimID</td>
+            <th>@l.BirimID</th>
             <td>@l.BirimAd</td>
             <td><a href="/Birim/BirimSil/@l.BirimID" class="btn btn-danger">Sil</a>  </td>
             <td><a href="/Birim/BirimGetir/@l.BirimID" class="btn btn-success">Güncelle</a>  </td>

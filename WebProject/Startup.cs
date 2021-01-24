@@ -9,6 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using WebProject.Models;
+using WebProject.Repositories;
+using signalRtc.hubs;
 
 namespace WebProject
 {
@@ -30,7 +33,21 @@ namespace WebProject
                 {
                     x.LoginPath = "/Login/GirisYap/";
                 });
+			services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                    builder => builder.WithOrigins("http://localhost:4200", "https://localhost:4200")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
+
+            services.AddSignalR();
+            //services.AddSingleton<ProductRepository>();
+            services.AddMvc();
+
         }
+		readonly string MyAllowSpecificOrigins = "AllowOrigins";
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -53,12 +70,28 @@ namespace WebProject
             app.UseRouting();
 
             app.UseAuthorization();
+			app.UseCors(MyAllowSpecificOrigins);
 
+            /*  app.UseEndpoints(endpoints =>
+              {
+                  endpoints.MapControllerRoute(
+                      name: "default",
+                      pattern: "{controller=Login}/{action=GirisYap}/{id?}");
+              });*/
+
+            /* app.UseMvc(routes =>
+             {
+                 routes.MapRoute(
+                     name: "default",
+                     template: "{controller=Category}/action=Index}/{id?}");
+             });*/
             app.UseEndpoints(endpoints =>
             {
+				//endpoints.MapHub<SignalRtcHub>("/signalrtc");
+				endpoints.MapHub<SignalRtcHub>("/Product/List");
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Login}/{action=GirisYap}/{id?}");
+                    pattern: "{controller=Product}/{action=List}/{id?}");
             });
         }
     }

@@ -10,11 +10,14 @@ namespace WebProject.Models
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=LENOVO-PC; database=BirimDB;integrated security=true");
+            optionsBuilder.UseSqlServer("server=DESKTOP-SLUIDB0; database=BirimDB;integrated security=true");
         }
         public DbSet<Birim> Birims { get; set; }
         public DbSet<Personel> Personels { get; set; }
 
         public DbSet<Admin> Admins { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
     }
 }

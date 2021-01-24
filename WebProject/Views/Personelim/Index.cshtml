@@ -1,10 +1,9 @@
-﻿@using WebProject.Models
-@model List<Personel>
+﻿@model List<Personel>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layoutw3.cshtml";
 }
-
+<h2>Personeller</h2>
 <br />
 
 <table class="table table-bordered">
@@ -22,7 +21,7 @@
     @foreach (var l in Model)
     {
         <tr>
-            <td>@l.PersonelID</td>
+            <th>@l.PersonelID</th>
             <td>@l.Ad</td>
             <td>@l.Soyad</td>
             <td>@l.Birim.BirimAd</td>

@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layoutw3.cshtml";
+}
+
+<h1>Ürünler</h1>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Image Url</th>
+        <th>Stock</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Category Name</th>
+        <th>Delete</th>
+        <th>Update</th>
+        <th>Details</th>
+
+    </tr>
+    @foreach (var x in Model)
+    {
+            <tr>
+ 
+
+    <th>@x.ProductID</th>
+    <td>@x.Name</td>
+    <td>@x.Description</td>
+    <td>@x.Price</td>
+    <td>@x.ImageUrl.Substring(0, 2)...</td>
+    <td>@x.Stock</td>
+    <td>@x.Brand</td>
+    <td>@x.Model</td>
+    <td>@x.Category.CategoryName</td>
+    @*<td><a asp-controller="Product" asp-action="ProductDelete" asp-route-pd="@x.ProductID" class="btn btn-danger">Delete</a></td>*@
+    <td><a href="/Product/DeleteProduct/@x.ProductID" class="btn btn-danger">Delete</a></td>
+    <td><a href="/Product/GetProduct/@x.ProductID" class="btn btn-success">Update</a></td>
+    <td><a href="#" class="btn btn-info">Details</a></td>
+    
+            </tr>
+    }
+
+</table>
+<br />
+<a href="/Product/AddProduct/" class="btn btn-primary">Yeni Ürün</a>
+<br />

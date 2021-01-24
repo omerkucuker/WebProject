@@ -1,0 +1,44 @@
+﻿@model WebProject.Models.Product
+
+@{
+    ViewData["Title"] = "ProductGetir";
+    Layout = "~/Views/Shared/_Layoutw3.cshtml";
+}
+
+<h2>Ürün Güncelleme</h2>
+
+<br />
+
+@using (Html.BeginForm("UpdateProduct", "Product", FormMethod.Post))
+{
+    @Html.Label("Product ID")
+    @Html.TextBoxFor(x => x.ProductID, new { @class = "form-control" })
+    <br />
+    @Html.Label("Name")
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <br />
+    @Html.Label("Description")
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    <br />
+    @Html.Label("Price")
+    @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+    <br />
+    @Html.Label("ImageUrl")
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+    <br />
+    @Html.Label("Stock")
+    @Html.TextBoxFor(x => x.Stock, new { @class = "form-control" })
+    <br />
+    @Html.Label("Brand")
+    @Html.TextBoxFor(x => x.Brand, new { @class = "form-control" })
+    <br />
+    @Html.Label("Model")
+    @Html.TextBoxFor(x => x.Model, new { @class = "form-control" })
+    <br />
+    @Html.Label("CategoryID")
+    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.CatList, new { @class = "form-control" })
+    @*@Html.TextBoxFor(x => x.CategoryID, new { @class = "form-control" })*@
+    <br />
+
+    <button class="btn btn-info" style="background-color:cornflowerblue">Ürün Güncelle</button>
+}

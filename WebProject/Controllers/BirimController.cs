@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebProject.Models;
 
@@ -10,6 +11,8 @@ namespace WebProject.Controllers
     public class BirimController : Controller
     {
         Context c = new Context();
+
+        [Authorize]
         public IActionResult Index()
         {
             var degerler = c.Birims.ToList();

@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebProject.Models;
 
 namespace WebProject.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20201122113744_yenipc")]
+    partial class yenipc
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,28 +53,6 @@ namespace WebProject.Migrations
                     b.ToTable("Birims");
                 });
 
-            modelBuilder.Entity("WebProject.Models.Category", b =>
-                {
-                    b.Property<int>("CategoryID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("CategoryDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CategoryName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
-                    b.HasKey("CategoryID");
-
-                    b.ToTable("Categories");
-                });
-
             modelBuilder.Entity("WebProject.Models.Personel", b =>
                 {
                     b.Property<int>("PersonelID")
@@ -96,44 +76,6 @@ namespace WebProject.Migrations
                     b.ToTable("Personels");
                 });
 
-            modelBuilder.Entity("WebProject.Models.Product", b =>
-                {
-                    b.Property<int>("ProductID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Brand")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CategoryID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Model")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<int>("Stock")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductID");
-
-                    b.HasIndex("CategoryID");
-
-                    b.ToTable("Products");
-                });
-
             modelBuilder.Entity("WebProject.Models.Personel", b =>
                 {
                     b.HasOne("WebProject.Models.Birim", "Birim")
@@ -145,25 +87,9 @@ namespace WebProject.Migrations
                     b.Navigation("Birim");
                 });
 
-            modelBuilder.Entity("WebProject.Models.Product", b =>
-                {
-                    b.HasOne("WebProject.Models.Category", "Category")
-                        .WithMany("Products")
-                        .HasForeignKey("CategoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-                });
-
             modelBuilder.Entity("WebProject.Models.Birim", b =>
                 {
                     b.Navigation("Personels");
-                });
-
-            modelBuilder.Entity("WebProject.Models.Category", b =>
-                {
-                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }
